@@ -37,16 +37,12 @@ class Linkedlist {
     public String display(){
         Node t = head;
 
-        // StringBuilder result = new StringBuilder();
         String result = "";
         while(t != null){
-            // result.append(t.data).append(" -> ");
             result += Integer.toString(t.data) + " -> ";
             t = t.ref;
         }
 
-        // result.append("null");
-        // return result.toString();
         result += "null";
         return result;
     }
@@ -62,10 +58,19 @@ public class Main {
         while(true){
             System.out.print("Enter a value: ");
             int value = scanner.nextInt();
+            int choice = 0;
             
-            System.out.println("Operations\n[1] Insert to the array\n[2] Insert to the linkedlist");
-            System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            do{
+                System.out.println("Operations\n[1] Insert to the array\n[2] Insert to the linkedlist");
+                System.out.print("Choice: ");
+                choice = scanner.nextInt();
+
+                if(choice == 1 || choice == 2){
+                    break;
+                }else{
+                    System.out.println("Invalid Choice!\n");
+                }
+            }while(true);
 
             boolean isInvalid = false;
             do{
@@ -73,7 +78,7 @@ public class Main {
                 switch(choice) {
                     case 1:
                         arrList.add(value);
-                        System.out.println("Array After Insertion: " +arrList);
+                        System.out.println("\nArray After Insertion: " +arrList);
                         break;
                     case 2:
                         do{
@@ -84,11 +89,11 @@ public class Main {
                             switch (insAt) {
                                 case 1:
                                     linkList.insertAtStart(value);
-                                    System.out.println("Linked list after insertion at beginning: " +linkList.display());
+                                    System.out.println("\nLinked list after insertion at beginning: " +linkList.display());
                                     break;
                                 case 2:
                                     linkList.insertAtEnd(value);
-                                    System.out.println("Linked list after insertion at end: " +linkList.display());
+                                    System.out.println("\nLinked list after insertion at end: " +linkList.display());
                                     break;
                                 default:
                                     System.out.println("Invalid choice!\n");
@@ -108,15 +113,13 @@ public class Main {
                     if(isEnding == 1){
                         break;
                     }else if(isEnding == 2){
+                        scanner.close();
                         return;
                     }else{
                         System.out.println("Invalid Choice!\n");
                     }
                 }while(true);
             }while(isInvalid);
-            scanner.close();
         }
-        
-        // scanner.close();
     }
 }

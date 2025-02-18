@@ -6,7 +6,7 @@ class Node {
     Node ref;
     public Node(int data){
         this.data = data;
-        ref = null;
+        this.ref = null;
     }
 }
 
@@ -37,14 +37,18 @@ class Linkedlist {
     public String display(){
         Node t = head;
 
-        StringBuilder result = new StringBuilder();
+        // StringBuilder result = new StringBuilder();
+        String result = "";
         while(t != null){
-            result.append(t.data).append(" -> ");
+            // result.append(t.data).append(" -> ");
+            result += Integer.toString(t.data) + " -> ";
             t = t.ref;
         }
 
-        result.append("null");
-        return result.toString();
+        // result.append("null");
+        // return result.toString();
+        result += "null";
+        return result;
     }
 }
 
@@ -58,7 +62,7 @@ public class Main {
         while(true){
             System.out.print("Enter a value: ");
             int value = scanner.nextInt();
-
+            
             System.out.println("Operations\n[1] Insert to the array\n[2] Insert to the linkedlist");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
@@ -110,7 +114,7 @@ public class Main {
                     }
                 }while(true);
             }while(isInvalid);
-
+            scanner.close();
         }
         
         // scanner.close();
